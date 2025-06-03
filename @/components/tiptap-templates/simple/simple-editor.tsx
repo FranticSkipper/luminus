@@ -222,7 +222,14 @@ export function SimpleEditor() {
       Link.configure({ openOnClick: false }),
     ],
     content: content,
+    onUpdate: ({ editor }) => {
+      const json = editor.getJSON();
+
+      console.log(json);
+    },
   });
+
+  editor?.getJSON();
 
   const bodyRect = useCursorVisibility({
     editor,
