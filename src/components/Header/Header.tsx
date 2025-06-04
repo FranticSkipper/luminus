@@ -5,10 +5,14 @@ import styles from "./styles.module.scss";
 
 export default function Header() {
   return (
-    <header className={styles.header}>
-      <Logo url="" alt="" />
-      <NavigationBar />
-      <Authorization />
+    <header>
+      <div className={styles.header_container}>
+        <div className={styles.wrapper}>
+          <Logo url="" alt="" />
+          <NavigationBar />
+          <Authorization />
+        </div>
+      </div>
     </header>
   );
 }
