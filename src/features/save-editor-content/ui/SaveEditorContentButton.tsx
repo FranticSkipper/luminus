@@ -1,11 +1,12 @@
+import Button from "@shared/ui/Button/Button";
 import useSaveEditorContent from "../model/useSaveEditorContent";
 
-export default function SaveEditorContentButton({ editorContent }) {
+export function SaveEditorContentButton({ content }: { content: string }) {
   const { saveEditorContent } = useSaveEditorContent();
 
   function handleSaveEditorContent() {
-    saveEditorContent(editorContent);
+    saveEditorContent(content);
   }
 
-  return <button onClick={handleSaveEditorContent}>Save</button>;
+  return <Button onClick={handleSaveEditorContent}>Save content</Button>;
 }

@@ -1,4 +1,4 @@
-import type { ButtonProps } from "@/components/tiptap-ui-primitive/button";
+import type { ButtonProps } from "@entities/tiptapEditor/components/tiptap-ui-primitive/button";
 import styles from "./Button.module.scss";
 
 export default function Button(props: ButtonProps) {
