@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import styles from "./styles.module.scss";
 
 const links = [
   {
@@ -6,15 +7,26 @@ const links = [
     src: "/editor",
     name: "Go to Editor",
   },
+  {
+    id: crypto.randomUUID(),
+    src: "/registration",
+    name: "Registration",
+  },
 ];
 
 export function NavigationBar() {
   return (
     <nav>
-      <ul>
+      <ul className={styles.navigation_bar_list}>
         {links.map((link) => (
-          <Link to={link.src} key={link.id}>
-            {link.name}
+          <Link
+            to={link.src}
+            key={link.id}
+            className={styles.navigation_bar_list__item}
+          >
+            <span className={styles.navigation_bar_list__item_name}>
+              {link.name}
+            </span>
           </Link>
         ))}
       </ul>

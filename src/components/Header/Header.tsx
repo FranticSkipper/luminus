@@ -8,7 +8,7 @@ export function Header() {
     <header>
       <div className={styles.header_container}>
         <div className={styles.wrapper}>
-          <Logo url="" alt="" />
+          <Logo />
           <NavigationBar />
           <Authorization />
         </div>
