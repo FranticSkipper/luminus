@@ -1,10 +1,22 @@
-export default function NavigationBar() {
+import { Link } from "react-router-dom";
+
+const links = [
+  {
+    id: crypto.randomUUID(),
+    src: "/editor",
+    name: "Go to Editor",
+  },
+];
+
+export function NavigationBar() {
   return (
     <nav>
       <ul>
-        <li>test 1</li>
-        <li>test 2</li>
-        <li>test 3</li>
+        {links.map((link) => (
+          <Link to={link.src} key={link.id}>
+            {link.name}
+          </Link>
+        ))}
       </ul>
     </nav>
   );

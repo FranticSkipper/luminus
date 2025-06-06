@@ -1,9 +1,9 @@
 import Logo from "@shared/components/Logo/Logo";
 import Authorization from "@widgets/Auth/Auth";
-import NavigationBar from "@widgets/NavigationBar/NavigationBar";
+import { NavigationBar } from "@widgets/NavigationBar/index";
 import styles from "./styles.module.scss";
 
-export default function Header() {
+export function Header() {
   return (
     <header>
       <div className={styles.header_container}>

@@ -1,12 +1,9 @@
-interface Props {
-  url: string;
-  alt: string;
-}
+import { Link } from "react-router";
 
-export default function Logo({ url, alt }: Props) {
+export default function Logo() {
   return (
     <div>
-      <img src={url} alt={alt} />
+      <Link to="/">Luminus</Link>
     </div>
   );
 }

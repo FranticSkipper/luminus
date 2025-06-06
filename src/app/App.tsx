@@ -1,13 +1,6 @@
-import TiptapEditor from "../widgets/TiptapEditor/TiptapEditor";
-import Header from "../components/Header/Header";
+import { RouterProvider } from "react-router";
+import { router } from "./router/index";
 
-function App() {
-  return (
-    <>
-      <Header />
-      <TiptapEditor />;
-    </>
-  );
-}
-
-export default App;
+export const App = () => {
+  return <RouterProvider router={router} />;
+};

@@ -1,1 +1,2 @@
-export * from "./text-align-button"
+/* eslint-disable react-refresh/only-export-components */
+export * from "./text-align-button";
