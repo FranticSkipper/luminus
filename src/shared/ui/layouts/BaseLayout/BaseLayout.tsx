@@ -1,4 +1,5 @@
 import { Header } from "@components/Header/Header";
+import { BaseContainer } from "@shared/ui/containers/BaseContainer/index";
 import { Outlet } from "react-router";
 
 export function BaseLayout() {
@@ -6,7 +7,9 @@ export function BaseLayout() {
     <>
       <Header />
       <main>
-        <Outlet />
+        <BaseContainer>
+          <Outlet />
+        </BaseContainer>
       </main>
     </>
   );

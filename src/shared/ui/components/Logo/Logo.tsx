@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export default function Logo() {
+export function Logo() {
   return (
     <div>
       <Link to="/">Luminus</Link>
