@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router";
-import { HomePage } from "@features/pages/home/HomePage";
-import { EditorPage } from "@features/pages/editor/EditorPage";
-import { LogupPage } from "@features/pages/auth/logup/LogupPage";
 import { BaseLayout } from "@shared/ui/layouts/BaseLayout";
 import { WithHeaderLayout } from "../layout/WithHeaderLayout";
-import { WithDirectoriesTreeLayout } from "@features/pages/editor/ui/layouts/WithDirectoriesTreeLayout";
+import { WithDirectoriesTreeLayout } from "@pages/editor/ui/layouts/WithDirectoriesTreeLayout";
+import { HomePage } from "@pages/home/HomePage";
+import { LogupPage } from "@pages/auth/logup/LogupPage";
+import { EditorPage } from "@pages/editor";
 
 export const router = createBrowserRouter([
   {

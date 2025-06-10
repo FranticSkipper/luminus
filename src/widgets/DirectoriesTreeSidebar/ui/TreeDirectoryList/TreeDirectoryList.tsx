@@ -8,13 +8,7 @@ export function TreeDirectoryList({ dataList }) {
       {dataList.map((item) => {
         switch (item.type) {
           case "directory":
-            return (
-              <TreeDirectoryDir
-                key={item.id}
-                name={item.name}
-                children={item.children}
-              />
-            );
+            return <TreeDirectoryDir key={item.id} item={item} />;
           case "file":
             return (
               <TreeDirectoryFile key={item.id}>{item.name}</TreeDirectoryFile>
