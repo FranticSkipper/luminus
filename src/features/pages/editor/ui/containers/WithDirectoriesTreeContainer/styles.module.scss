@@ -1,0 +1,15 @@
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1230px) 1fr;
+}
+
+.aside {
+  grid-column: 1/2;
+}
+
+.main {
+  grid-column: 2/3;
+}
