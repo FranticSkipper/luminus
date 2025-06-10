@@ -1,5 +1,6 @@
 import { CreateNewTreeDirectoryButton } from "@features/create-new-tree-directory/ui";
 import { TreeDirectoryList } from "./ui/TreeDirectoryList";
+import { useEffect } from "react";
 
 interface TreeItem {
   id: string;
@@ -184,6 +185,16 @@ const data: TreeItem[] = [
 ];
 
 export function DirectoriesTreeSidebar() {
+  useEffect(() => {
+    fetch("http://localhost:3000/api/directory-tree")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.data);
+      });
+  });
+
   return (
     <aside>
       <h2>Directories</h2>
