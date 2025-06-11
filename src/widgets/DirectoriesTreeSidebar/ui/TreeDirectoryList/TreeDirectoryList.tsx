@@ -1,18 +1,21 @@
+import type { DirectoryTreeItemWithChildren } from "@entities/file-system/model/types";
 import { TreeDirectoryDir } from "../TreeDirectoryDir/TreeDirectoryDir";
 import { TreeDirectoryFile } from "../TreeDirectoryFile";
 import styles from "./styles.module.scss";
 
-export function TreeDirectoryList({ dataList }) {
+interface Props {
+  itemList: DirectoryTreeItemWithChildren[];
+}
+
+export function TreeDirectoryList({ itemList }: Props) {
   return (
     <ul className={styles.list}>
-      {dataList.map((item) => {
+      {itemList.map((item) => {
         switch (item.type) {
           case "directory":
-            return <TreeDirectoryDir key={item.id} item={item} />;
+            return <TreeDirectoryDir key={item.id} directoryItem={item} />;
           case "file":
-            return (
-              <TreeDirectoryFile key={item.id}>{item.name}</TreeDirectoryFile>
-            );
+            return <TreeDirectoryFile key={item.id} fileItem={item} />;
           default:
             return;
         }

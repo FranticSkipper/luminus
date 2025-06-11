@@ -1,12 +1,13 @@
+import type { DirectoryTreeItemWithChildren } from "@entities/file-system/model/types";
 import { ItemTypes } from "@shared/model/TreeDirectoryDnd/ItemTypes";
 import { useEffect, useRef } from "react";
 import { useDrag } from "react-dnd";
 
-export const DirDrag = ({ id, children }) => {
+export function useDirDrag(item: DirectoryTreeItemWithChildren) {
   const itemRef = useRef<HTMLDivElement>(null);
   const [, dragRef] = useDrag(() => ({
     type: ItemTypes.DIRECTORY,
-    item: { id },
+    item: { item },
   }));
 
   useEffect(() => {
@@ -15,5 +16,7 @@ export const DirDrag = ({ id, children }) => {
     }
   }, [dragRef]);
 
-  return <div ref={itemRef}>{children}</div>;
-};
+  return {
+    itemRef,
+  };
+}

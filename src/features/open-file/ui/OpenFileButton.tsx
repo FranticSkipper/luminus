@@ -1,4 +1,4 @@
-import { useOpenFile } from "../model/useOpenFule";
+import { useOpenFile } from "../model/useOpenFile";
 
 interface Props {
   children: React.ReactNode;

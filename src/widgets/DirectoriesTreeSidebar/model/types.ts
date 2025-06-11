@@ -1,7 +1,6 @@
-export interface ITreeDirectoryStrategy {
-  render(dataList: any[]): React.FC;
-}
-
-export interface IDirectoryTreeCoordinator {
-  get(name: string, dataList: any[]): ITreeDirectoryStrategy | undefined;
+export interface FileItems {
+  id: string;
+  name: string;
+  type: "file" | "directory";
+  parentId: string | null;
 }

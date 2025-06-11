@@ -7,8 +7,6 @@ export const LoginFeature = () => {
 
   const openDialog = () => setIsDialogOpen(true);
   const closeDialog = () => {
-    console.log(1223);
-
     setIsDialogOpen(false);
   };
 

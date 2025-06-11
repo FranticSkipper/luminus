@@ -2,45 +2,50 @@ export interface DirectoryTreeItem {
   id: string;
   name: string;
   type: "file" | "directory";
-  children?: DirectoryTreeItem[];
-  path: string;
+  parentId: string | null;
 }
 
 export const dummyDirectoryTree: DirectoryTreeItem[] = [
   {
     id: "1",
+    name: "root",
+    type: "directory",
+    parentId: null,
+  },
+  {
+    id: "2",
     name: "src",
     type: "directory",
-    path: "/src",
-    children: [
-      {
-        id: "2",
-        name: "components",
-        type: "directory",
-        path: "/src/components",
-        children: [
-          {
-            id: "3",
-            name: "Button.tsx",
-            type: "file",
-            path: "/src/components/Button.tsx",
-          },
-        ],
-      },
-      {
-        id: "4",
-        name: "utils",
-        type: "directory",
-        path: "/src/utils",
-        children: [
-          {
-            id: "5",
-            name: "helpers.ts",
-            type: "file",
-            path: "/src/utils/helpers.ts",
-          },
-        ],
-      },
-    ],
+    parentId: "1",
+  },
+  {
+    id: "3",
+    name: "index.ts",
+    type: "file",
+    parentId: "2",
+  },
+  {
+    id: "4",
+    name: "components",
+    type: "directory",
+    parentId: "2",
+  },
+  {
+    id: "5",
+    name: "Button.tsx",
+    type: "file",
+    parentId: "4",
+  },
+  {
+    id: "6",
+    name: "public",
+    type: "directory",
+    parentId: "1",
+  },
+  {
+    id: "7",
+    name: "index.html",
+    type: "file",
+    parentId: "6",
   },
 ];
