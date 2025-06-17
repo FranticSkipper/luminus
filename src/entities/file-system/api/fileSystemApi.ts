@@ -21,19 +21,15 @@ export const fileSystemApi = createApi({
     getById: build.query<DirectoryTreeItem, string>({
       query: (id) => `${id}`,
     }),
-    updateDirectory: build.mutation<any, DirectoryTreeItemWithChildren>({
+    updateDirectory: build.mutation<
+      { status: string; data: DirectoryTreeItem[] },
+      DirectoryTreeItemWithChildren
+    >({
       query: (item) => ({
         url: `/${item.id}`,
         method: "PATCH",
         body: item,
       }),
-      transformResponse: (res: {
-        status: string;
-        data: DirectoryTreeItem[];
-      }) => {
-        console.log(res);
-        return res;
-      },
       invalidatesTags: ["Files"],
     }),
   }),

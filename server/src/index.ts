@@ -32,8 +32,10 @@ app.listen(PORT, () => {
   logger.info(`📡 URL: ${URL}`);
   logger.info(`📚 API Documentation:`);
   logger.info(`   GET    ${URL}/api/directory-tree`);
+  logger.info(`   GET    ${URL}/api/directory-tree/search`);
   logger.info(`   GET    ${URL}/api/directory-tree/:id`);
   logger.info(`   POST   ${URL}/api/directory-tree`);
   logger.info(`   PATCH  ${URL}/api/directory-tree/:id`);
   logger.info(`   DELETE ${URL}/api/directory-tree/:id`);
+  logger.info(`   GET    ${URL}/health`);
 });

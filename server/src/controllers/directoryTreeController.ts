@@ -19,6 +19,39 @@ export const getDirectoryTree = async (req: Request, res: Response) => {
   }
 };
 
+// Search items
+export const searchItems = async (req: Request, res: Response) => {
+  try {
+    const { query } = req.query;
+
+    if (!query || typeof query !== "string") {
+      throw new AppError(400, "Search query is required");
+    }
+
+    const searchResults = dummyDirectoryTree.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    res.json({
+      status: "success",
+      data: searchResults,
+    });
+  } catch (error) {
+    if (error instanceof AppError) {
+      res.status(error.statusCode).json({
+        status: "error",
+        message: error.message,
+      });
+    } else {
+      logger.error("Error searching items:", error);
+      res.status(500).json({
+        status: "error",
+        message: "Failed to search items",
+      });
+    }
+  }
+};
+
 // Get single item by ID
 export const getDirectoryItem = async (req: Request, res: Response) => {
   try {

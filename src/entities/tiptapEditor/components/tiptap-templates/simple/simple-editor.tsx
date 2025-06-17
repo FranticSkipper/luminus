@@ -82,7 +82,7 @@ import {
 import "@/components/tiptap-templates/simple/simple-editor.scss";
 
 import content from "@/components/tiptap-templates/simple/data/content.json";
-import { SaveEditorContentButton } from "@features/save-editor-content/ui/index";
+import { SaveEditorContentButton } from "@features/create-new-tree-directory/save-editor-content/ui/index";
 
 const MainToolbarContent = ({
   editorContent,

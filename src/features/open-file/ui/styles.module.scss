@@ -1,0 +1,71 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+
+  &:hover {
+    background-color: #f8f9fa;
+    border-color: #2196f3;
+    color: #2196f3;
+  }
+
+  &:active {
+    background-color: #e3f2fd;
+    border-color: #1976d2;
+    color: #1976d2;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+  }
+
+  &.active {
+    background-color: #e3f2fd;
+    border-color: #2196f3;
+    color: #2196f3;
+    font-weight: 500;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.8;
+  }
+
+  .name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "SF Mono", "Consolas", monospace;
+  }
+
+  // File type indicator
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #2196f3;
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover::after,
+  &.active::after {
+    opacity: 1;
+  }
+}

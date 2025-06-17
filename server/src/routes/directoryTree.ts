@@ -5,12 +5,16 @@ import {
   createDirectoryItem,
   updateDirectoryItem,
   deleteDirectoryItem,
+  searchItems,
 } from "../controllers/directoryTreeController";
 
 const router = Router();
 
 // Get all items
 router.get("/", getDirectoryTree);
+
+// Search items
+router.get("/search", searchItems);
 
 // Get single item
 router.get("/:id", getDirectoryItem);
