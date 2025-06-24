@@ -1,9 +1,9 @@
-import type { DirectoryTreeItemWithChildren } from "@entities/file-system/model/types";
+import type { FileTreeItemWithChildren } from "@entities/file-tree/model/types";
 
 import { useDirDrag } from "../model/useDirDrag";
 
 interface Props {
-  item: DirectoryTreeItemWithChildren;
+  item: FileTreeItemWithChildren;
   children: React.ReactNode;
 }
 

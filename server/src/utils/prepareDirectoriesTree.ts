@@ -1,15 +1,15 @@
 import type { DirectoryTreeItem } from "../models/DirectoryTree";
 
-interface DirectoryTreeItemWithChildren extends DirectoryTreeItem {
-  children: DirectoryTreeItemWithChildren[];
+interface FileTreeItemWithChildren extends DirectoryTreeItem {
+  children: FileTreeItemWithChildren[];
 }
 
 export const prepareDirectoriesTree = (
   items: DirectoryTreeItem[]
-): DirectoryTreeItemWithChildren[] => {
+): FileTreeItemWithChildren[] => {
   // Create a map for quick access to items with children
-  const itemMap = new Map<string, DirectoryTreeItemWithChildren>();
-  const result: DirectoryTreeItemWithChildren[] = [];
+  const itemMap = new Map<string, FileTreeItemWithChildren>();
+  const result: FileTreeItemWithChildren[] = [];
 
   // First pass: create all items with empty children arrays
   items.forEach((item) => {

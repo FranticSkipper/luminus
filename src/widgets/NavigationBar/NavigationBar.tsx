@@ -7,11 +7,6 @@ const links = [
     src: "/editor",
     name: "Go to Editor",
   },
-  {
-    id: crypto.randomUUID(),
-    src: "/registration",
-    name: "Registration",
-  },
 ];
 
 export function NavigationBar() {

@@ -1,6 +1,6 @@
-import type { DirectoryTreeItemWithChildren } from "@entities/file-system/model/types";
+import type { FileTreeItemWithChildren } from "@entities/file-tree/model/types";
 import { useUpdateTreeDirectory } from "@features/update-tree-directory/model/useUpdateTreeDirectory";
-import { ItemTypes } from "@shared/model/TreeDirectoryDnd/ItemTypes";
+import { ItemTypes } from "@shared/model/types";
 import { useEffect, useRef } from "react";
 import { useDrop } from "react-dnd";
 
@@ -9,7 +9,7 @@ export function useDirDrop(parentID: string) {
   const itemRef = useRef<HTMLDivElement>(null);
   const [, dropRef] = useDrop(() => ({
     accept: ItemTypes.DIRECTORY,
-    drop: ({ item }: { item: DirectoryTreeItemWithChildren }) => {
+    drop: ({ item }: { item: FileTreeItemWithChildren }) => {
       if (parentID === item.id) {
         return;
       }

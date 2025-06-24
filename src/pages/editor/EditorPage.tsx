@@ -1,10 +1,16 @@
-import { SimpleEditor } from "@entities/tiptapEditor/components/tiptap-templates/simple/simple-editor";
+import { WithDirectoriesTreeContainer } from "./ui/containers/WithDirectoriesTreeContainer";
+import TiptapEditor from "@widgets/TiptapEditor/TiptapEditor";
+import { EditorDetailsWidget } from "@widgets/EditorDetailsWidget/EditorDetailsWidget";
+import { FileTreeWidget } from "@widgets/FileTreeWidget";
 
 export const EditorPage = () => {
   return (
     <>
-      <h1>Editor</h1>
-      <SimpleEditor />
+      <WithDirectoriesTreeContainer
+        sidebar={<FileTreeWidget />}
+        content={<TiptapEditor />}
+        details={<EditorDetailsWidget />}
+      />
     </>
   );
 };

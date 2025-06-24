@@ -34,10 +34,10 @@ import {
 
 // --- Tiptap Node ---
 import { ImageUploadNode } from "@entities/tiptapEditor/components/tiptap-node/image-upload-node/image-upload-node-extension";
-import "@/components/tiptap-node/code-block-node/code-block-node.scss";
-import "@/components/tiptap-node/list-node/list-node.scss";
-import "@/components/tiptap-node/image-node/image-node.scss";
-import "@/components/tiptap-node/paragraph-node/paragraph-node.scss";
+import "@entities/tiptapEditor/components/tiptap-node/code-block-node/code-block-node.scss";
+import "@entities/tiptapEditor/components/tiptap-node/list-node/list-node.scss";
+import "@entities/tiptapEditor/components/tiptap-node/image-node/image-node.scss";
+import "@entities/tiptapEditor/components/tiptap-node/paragraph-node/paragraph-node.scss";
 
 // --- Tiptap UI ---
 import { HeadingDropdownMenu } from "@entities/tiptapEditor/components/tiptap-ui/heading-dropdown-menu";
@@ -79,18 +79,17 @@ import {
 } from "@entities/tiptapEditor/lib/tiptap-utils";
 
 // --- Styles ---
-import "@/components/tiptap-templates/simple/simple-editor.scss";
+import "@entities/tiptapEditor/components/tiptap-templates/simple/simple-editor.scss";
 
-import content from "@/components/tiptap-templates/simple/data/content.json";
-import { SaveEditorContentButton } from "@features/create-new-tree-directory/save-editor-content/ui/index";
+// import content from "@entities/tiptapEditor/components/tiptap-templates/simple/data/content.json";
+import { useAppDispatch } from "@app/store/hooks/useAppDispatch";
+import { setEditorContent } from "@entities/tiptapEditor/slice";
 
 const MainToolbarContent = ({
-  editorContent,
   onHighlighterClick,
   onLinkClick,
   isMobile,
 }: {
-  editorContent: string;
   onHighlighterClick: () => void;
   onLinkClick: () => void;
   isMobile: boolean;
@@ -140,8 +139,6 @@ const MainToolbarContent = ({
         <ImageUploadButton text="Add" />
       </ToolbarGroup>
 
-      <SaveEditorContentButton content={editorContent} />
-
       <Spacer />
       {isMobile && <ToolbarSeparator />}
       <ToolbarGroup>
@@ -181,13 +178,13 @@ const MobileToolbarContent = ({
 );
 
 export function SimpleEditor() {
+  const dispatch = useAppDispatch();
   const isMobile = useMobile();
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = React.useState<
     "main" | "highlighter" | "link"
   >("main");
   const toolbarRef = React.useRef<HTMLDivElement>(null);
-  const [currentContent, setCurrentContent] = React.useState<string>("");
   const editor = useEditor({
     immediatelyRender: false,
     editorProps: {
@@ -221,12 +218,11 @@ export function SimpleEditor() {
       TrailingNode,
       Link.configure({ openOnClick: false }),
     ],
-    content,
-    onCreate: ({ editor }) => {
-      handleSaveEditorContent(editor);
-    },
     onUpdate: ({ editor }) => {
-      handleSaveEditorContent(editor);
+      const contentAsJson = editor.getJSON();
+      const contentAsString = JSON.stringify(contentAsJson);
+
+      dispatch(setEditorContent(contentAsString));
     },
   });
 
@@ -243,13 +239,6 @@ export function SimpleEditor() {
     }
   }, [isMobile, mobileView]);
 
-  function handleSaveEditorContent(editor: Editor) {
-    const contentAsJson = editor.getJSON();
-    const contentAsString = JSON.stringify(contentAsJson);
-
-    setCurrentContent(contentAsString);
-  }
-
   return (
     <EditorContext.Provider value={{ editor }}>
       <Toolbar
@@ -264,7 +253,6 @@ export function SimpleEditor() {
       >
         {mobileView === "main" ? (
           <MainToolbarContent
-            editorContent={currentContent}
             onHighlighterClick={() => setMobileView("highlighter")}
             onLinkClick={() => setMobileView("link")}
             isMobile={isMobile}

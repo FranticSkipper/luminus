@@ -20,8 +20,8 @@ export function SearchFileForm() {
           type="search"
           placeholder="Search files..."
           className={styles.input}
-          name="keyword"
-          value={values.keyword}
+          name="query"
+          value={values.query}
           onChange={(e) => setKeyword(e.target.value)}
         />
 

@@ -1,0 +1,65 @@
+.item {
+  list-style: none;
+  margin: 2px 0;
+  border-radius: 4px;
+  border: 1px solid #2d3748;
+  background: #1a202c;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #4a5568;
+    background: #2d3748;
+  }
+}
+
+.directoryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #e2e8f0;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover {
+    background: rgba(66, 153, 225, 0.1);
+  }
+}
+
+.directoryName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.directoryIcon {
+  width: 16px;
+  height: 16px;
+  color: #4299e1;
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  .directoryHeader:hover & {
+    opacity: 1;
+  }
+}
+
+.expanded {
+  border-color: #4299e1;
+  background: #2d3748;
+}
+
+.children {
+  margin-left: 20px;
+  border-left: 1px solid #4a5568;
+  padding-left: 8px;
+}

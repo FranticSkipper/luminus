@@ -3,49 +3,9 @@ export interface DirectoryTreeItem {
   name: string;
   type: "file" | "directory";
   parentId: string | null;
+  ownerId: string; // ID of the user who owns this item
 }
 
-export const dummyDirectoryTree: DirectoryTreeItem[] = [
-  {
-    id: "1",
-    name: "root",
-    type: "directory",
-    parentId: null,
-  },
-  {
-    id: "2",
-    name: "src",
-    type: "directory",
-    parentId: "1",
-  },
-  {
-    id: "3",
-    name: "index.ts",
-    type: "file",
-    parentId: "2",
-  },
-  {
-    id: "4",
-    name: "components",
-    type: "directory",
-    parentId: "2",
-  },
-  {
-    id: "5",
-    name: "Button.tsx",
-    type: "file",
-    parentId: "4",
-  },
-  {
-    id: "6",
-    name: "public",
-    type: "directory",
-    parentId: "1",
-  },
-  {
-    id: "7",
-    name: "index.html",
-    type: "file",
-    parentId: "6",
-  },
-];
+export interface FileTreeItemWithChildren extends DirectoryTreeItem {
+  children: FileTreeItemWithChildren[];
+}

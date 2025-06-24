@@ -1,11 +1,11 @@
-import { useUpdateDirectoryMutation } from "@entities/file-system/api/fileSystemApi";
-import type { DirectoryTreeItemWithChildren } from "@entities/file-system/model/types";
+import { useUpdateFileMutation } from "@entities/file-tree/api/fileTreeApi";
+import type { FileTreeItemWithChildren } from "@entities/file-tree/model/types";
 
 export function useUpdateTreeDirectory() {
-  const [updatePost, result] = useUpdateDirectoryMutation();
+  const [updatePost, result] = useUpdateFileMutation();
 
   function updateDirectory(
-    item: DirectoryTreeItemWithChildren,
+    item: FileTreeItemWithChildren,
     newParentId: string
   ) {
     updatePost({ ...item, parentId: newParentId });

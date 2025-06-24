@@ -1,28 +1,35 @@
+import { useAppDispatch } from "@app/store/hooks/useAppDispatch";
+import { useLoginMutation } from "@entities/auth/api/authApi";
+import { setUser } from "@entities/auth/slice";
+import { CookieService } from "@shared/lib/cookieService";
 import { useState } from "react";
 
 export default function useAuthLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isShow, setIsShow] = useState(false);
+  const [userLogin] = useLoginMutation();
+  const dispatch = useAppDispatch();
 
-  function userLogin() {
-    //TODO: login  action
-  }
+  async function login() {
+    const res = await userLogin({ email, password });
 
-  function closeModal() {
-    setIsShow(false);
-  }
+    if (res.data.status === "success") {
+      const token = res.data.token;
 
-  function openModal() {
-    setIsShow(true);
+      if (token) {
+        CookieService.set("authToken", token);
+
+        const user = res.data.user;
+
+        dispatch(setUser(user));
+      }
+    }
   }
 
   return {
-    userLogin,
+    login,
     setEmail,
     setPassword,
-    closeModal,
-    openModal,
-    values: { email, password, isShow },
+    values: { email, password },
   };
 }
