@@ -5,8 +5,8 @@ import { fileSystemReducer } from "@entities/file-tree/slice";
 import { searchBarApi } from "@entities/search-bar/api/api";
 import { searchReducer } from "@entities/search-bar/slice";
 import { configureStore } from "@reduxjs/toolkit";
-import { editorSliceReducer } from "@entities/tiptapEditor/slice";
-import { editorApi } from "@entities/tiptapEditor/api";
+import { editorSliceReducer } from "@entities/editor/slice";
+import { editorApi } from "@entities/editor/api";
 
 export const store = configureStore({
   reducer: {

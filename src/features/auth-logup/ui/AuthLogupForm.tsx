@@ -22,6 +22,7 @@ export function AuthLogupForm() {
             type="email"
             className={styles.input}
             name="email"
+            placeholder="Enter your email"
             value={data.email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -35,6 +36,7 @@ export function AuthLogupForm() {
             type="password"
             className={styles.input}
             name="password"
+            placeholder="Enter your password"
             value={data.password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -44,7 +46,11 @@ export function AuthLogupForm() {
       <div className={styles.field}>
         <label className={styles.label}>
           <span>Repeat password</span>
-          <input type="password" className={styles.input} />
+          <input
+            type="password"
+            className={styles.input}
+            placeholder="Repeat your password"
+          />
         </label>
       </div>
 

@@ -75,12 +75,12 @@ export const deleteEditorContent = async (req: Request, res: Response) => {
 // Create a new file and save editor content in one step
 export const createEditorContent = async (req: Request, res: Response) => {
   try {
-    const { parentId, content, userId } = req.body;
-    if (!content || !userId) {
-      throw new AppError(400, "content and userId are required");
+    const { parentId, content, userId, name } = req.body;
+    if (!content || !userId || !name) {
+      throw new AppError(400, "content, userId and name are required");
     }
     // Generate a default file name and type
-    const fileName = `untitled-${Date.now()}.md`;
+    const fileName = name;
     const fileType = "file";
     // Create the file in the directory tree
     const newFile = addTreeItem({

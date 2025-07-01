@@ -18,26 +18,20 @@ export function ItemsList({ itemList, isNested = false }: Props) {
     [itemList]
   );
 
+  function renderListItem(item: FileTreeItemWithChildren) {
+    switch (item.type) {
+      case "directory":
+        return <DirectoryItem key={item.id} directoryItem={item} />;
+      case "file":
+        return <FileItem key={item.id} fileItem={item} />;
+      default:
+        return null;
+    }
+  }
+
   return (
     <ul className={isNested ? styles.nestedList : styles.list}>
-      {filteredByTypeList.map((item) => {
-        switch (item.type) {
-          case "directory":
-            return (
-              <li key={item.id} className={styles.item}>
-                <DirectoryItem directoryItem={item} />
-              </li>
-            );
-          case "file":
-            return (
-              <li key={item.id} className={styles.item}>
-                <FileItem fileItem={item} />
-              </li>
-            );
-          default:
-            return null;
-        }
-      })}
+      {filteredByTypeList.map((item) => renderListItem(item))}
     </ul>
   );
 }

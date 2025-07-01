@@ -1,7 +1,7 @@
 .link {
   padding: 8px 16px;
   border-radius: 6px;
-  text-decoration: none;
+  text-decoration: none !important;
   font-weight: 600;
   color: #007bff;
   background-color: transparent;
@@ -13,11 +13,13 @@
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    text-decoration: none !important;
   }
 
   &.active {
     background-color: #0056b3;
     color: white;
     border-color: #0056b3;
+    text-decoration: none !important;
   }
 }

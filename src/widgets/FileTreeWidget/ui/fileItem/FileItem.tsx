@@ -10,7 +10,7 @@ interface Props {
 export function FileItem({ fileItem }: Props) {
   return (
     <DirDrag item={fileItem}>
-      <div className={styles.wrapper}>
+      <li className={styles.wrapper}>
         <div className={styles.fileName}>
           <span className={styles.fileIcon}>📄</span>
           {fileItem.name}
@@ -18,7 +18,7 @@ export function FileItem({ fileItem }: Props) {
         <div className={styles.actions}>
           <DeleteTreeItemButton treeItemId={fileItem.id} />
         </div>
-      </div>
+      </li>
     </DirDrag>
   );
 }

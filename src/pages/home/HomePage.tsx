@@ -1,4 +1,4 @@
-import { First } from "@components/First";
+import { First } from "@shared/ui/First";
 
 export const HomePage = () => {
   return (

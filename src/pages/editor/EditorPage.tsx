@@ -1,5 +1,5 @@
 import { WithDirectoriesTreeContainer } from "./ui/containers/WithDirectoriesTreeContainer";
-import TiptapEditor from "@widgets/TiptapEditor/TiptapEditor";
+import { EditorWidget } from "@widgets/EditorWidget";
 import { EditorDetailsWidget } from "@widgets/EditorDetailsWidget/EditorDetailsWidget";
 import { FileTreeWidget } from "@widgets/FileTreeWidget";
 
@@ -8,7 +8,7 @@ export const EditorPage = () => {
     <>
       <WithDirectoriesTreeContainer
         sidebar={<FileTreeWidget />}
-        content={<TiptapEditor />}
+        content={<EditorWidget />}
         details={<EditorDetailsWidget />}
       />
     </>

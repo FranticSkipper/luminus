@@ -3,7 +3,7 @@ import useSaveEditorContent from "../model/useSaveEditorContent";
 import styles from "./styles.module.scss";
 
 export function SaveEditorContentLocationButton() {
-  const { directories, saveContent, setParentId, data } =
+  const { directories, saveContent, setParentId, setName, data } =
     useSaveEditorContent();
 
   function handleSaveEditorContent() {
@@ -11,7 +11,14 @@ export function SaveEditorContentLocationButton() {
   }
 
   return (
-    <div className={styles.container}>
+    <form action="" className={styles.container}>
+      <input
+        type="text"
+        placeholder="File name"
+        onChange={(e) => setName(e.target.value)}
+        value={data.name}
+        className={styles.input}
+      />
       <select
         className={styles.select}
         name="location"
@@ -28,6 +35,6 @@ export function SaveEditorContentLocationButton() {
       <Button onClick={handleSaveEditorContent} className={styles.button}>
         Save content
       </Button>
-    </div>
+    </form>
   );
 }
